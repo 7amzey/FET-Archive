@@ -1,0 +1,597 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+     {{ major }}
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/svg+xml" href="{{ major.darkLogo.url }}"/>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="col-12 col-md-10 col-lg-8 mx-auto mt-5" dir="rtl">
+        <span class="blockquote-footer mt-2">لاختيار مادة اضغط على اسم المادة في اي من الخطتين</span><br>
+        <span class="blockquote-footer mt-2">لا يوجد مصادر للمواد التي لا تعمل عند الضغط عليها في الخطة</span><br>
+        <span class="blockquote-footer mt-2">متطلبات الجامعة الاختيارية مجمعة في مكان واحد في اي من الخطتين</span>
+    </div>
+    
+    {# row to show the major plan #}
+    <div class="row mt-4 mb-4">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            {# if & else if statment responsable for showing the right map for each plan #}
+            {% if major.id == 1 %}
+                <img src="{{ major.plan_img.url }}" usemap="#image-map" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.plan_img.url }}" download={{ major }} class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/1/12" coords="2115,753,2406,570" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/1/23" coords="2471,319,2759,498" shape="rect">
+                    <area target="_self" alt="الذكاء الاصطناعي" title="الذكاء الاصطناعي" href="/1/24" coords="2463,565,2759,749,2675,108" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/1/11" coords="2113,317,2408,500" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/1/5" coords="3120,318,2825,507" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/1/4" coords="3460,323,3171,502" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/1/6" coords="3460,571,3171,755" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/1/14" coords="3171,817,3460,1001" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/1/7" coords="3460,1083,3171,1267" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/1/8" coords="676,324,386,508" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/1/9" coords="1856,1574,1561,1774" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/1/10" coords="921,413,87" shape="circle">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/1/13" coords="2408,839,2113,1023" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/1/15" coords="1779,320,2068,504" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/1/17" coords="1784,568,2074,752" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/1/18" coords="1728,571,1439,755" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/1/20" coords="1411,322,1121,500" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/1/21" coords="1060,566,771,750" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/1/118" coords="2163,1567,1868,1773" shape="rect">
+                    <area target="_self" alt="مختبر الفيزياء 1" title="مختبر الفيزياء 1" href="/1/16" coords="1589,420,95" shape="circle">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="/1/19" coords="1261,665,88" shape="circle">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/1/22" coords="192,420,92" shape="circle">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/1/33" coords="2074,842,1779,1031" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/1/34" coords="1734,842,1444,1025" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/1/37" coords="2079,1082,1790,1266" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/1/38" coords="1734,1081,1439,1260" shape="rect">
+                    <area target="_self" alt="إلكترونيات رقمية" title="إلكترونيات رقمية" href="/1/40" coords="2085,1336,1795,1520" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/1/36" coords="2408,1081,2113,1265" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/1/39" coords="2408,1335,2113,1519" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/1/26" coords="2764,843,2469,1021" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/1/27" coords="3120,834,2825,1012" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/1/28" coords="2759,1081,2469,1265" shape="rect">
+                    <area target="_self" alt="اساسيات شبكات الحاسوب" title="اساسيات شبكات الحاسوب" href="/1/29" coords="3120,1076,2831,1265" shape="rect">
+                    <area target="_self" alt="اساسيات الامن السيبراني" title="اساسيات الامن السيبراني" href="/1/31" coords="2764,1336,2469,1520" shape="rect">
+                    <area target="_self" alt="بروتوكولات الشبكات" title="بروتوكولات الشبكات" href="/1/30" coords="2831,1330,3120,1514" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/1/43" coords="398,577,665,745" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/1/46" coords="687,840,398,1019" shape="rect">
+                    <area target="_self" alt="البرمجة بلغة الكينونة" title="البرمجة بلغة الكينونة" href="/1/45" coords="1055,837,771,1015" shape="rect">
+                    <area target="_self" alt="معمارية الحاسوب وتنظيمه" title="معمارية الحاسوب وتنظيمه" href="/1/50" coords="693,1077,398,1261" shape="rect">
+                    <area target="_self" alt="تراكيب البيانات والخوارزميات" title="تراكيب البيانات والخوارزميات" href="/1/48" coords="1060,1079,765,1257" shape="rect">
+                    <area target="_self" alt="انظمة قواعد البيانات" title="انظمة قواعد البيانات" href="/1/54" coords="1021,1338,748,1505" shape="rect">
+                    <area target="_self" alt="نظم التشغيل" title="نظم التشغيل" href="/1/53" coords="1316,1346,1043,1514" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات المتوازية" title="انظمة المعالجات المتوازية" href="/1/57" coords="41,1338,331,1516" shape="rect">
+                    <area target="_self" alt="الانظمة المضمنة" title="الانظمة المضمنة" href="/1/59" coords="1322,1578,1032,1757" shape="rect">
+                    <area target="_self" alt="مختبر شبكات الحاسوب" title="مختبر شبكات الحاسوب" href="/1/32" coords="3330,1429,95" shape="circle">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="/1/42" coords="2269,1659,92" shape="circle">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="/1/41" coords="1690,1434,83" shape="circle">
+                    <area target="_self" alt="مختبر دوائر كهربائية" title="مختبر دوائر كهربائية" href="/1/35" coords="1261,937,86" shape="circle">
+                    <area target="_self" alt="مختبر تصميم المنطق الرقمي" title="مختبر تصميم المنطق الرقمي" href="/1/44" coords="199,674,98" shape="circle">
+                    <area target="_self" alt="مختبر انظمة معالجات دقيقة وحاكمات" title="مختبر انظمة معالجات دقيقة وحاكمات" href="/1/47" coords="209,927,95" shape="circle">
+                    <area target="_self" alt="مختبر معمارية الحاسوب وتنظيمه" title="مختبر معمارية الحاسوب وتنظيمه" href="/1/51" coords="208,1159,101" shape="circle">
+                    <area target="_self" alt="مختبر انظمة قواعد البيانات" title="مختبر انظمة قواعد البيانات" href="/1/55" coords="899,1675,94" shape="circle">
+                    <area target="_self" alt="مختبر الانظمة المضمنة" title="مختبر الانظمة المضمنة" href="/1/60" coords="1456,1659,89" shape="circle">
+                    <area target="_self" alt="برمجة متقدمة" title="برمجة متقدمة" href="/1/52" coords="1332,1347,1598,1515" shape="rect">
+                    <area href alt="متطلبات الجامعة الاختيارية" title="متطلبات الجامعة الاختيارية" coords="691,1585,394,1770" shape="rect" data-bs-toggle="modal" data-bs-target="#optionalSubjects">
+                    <area target="_self" alt="معمارية الحواسيب المتقدمة" title="معمارية الحواسيب المتقدمة" href="/1/56" coords="397,1335,685,1515" shape="rect">
+                    <area target="_self" alt="موضوعات خاصة" title="موضوعات خاصة" href="/1/65" coords="895,1877,1186,2060" shape="rect">
+                    <area target="_self" alt="المنطق المشوش" title="المنطق المشوش" href="/1/64" coords="1221,1877,1512,2060" shape="rect">
+                    <area target="_self" alt="معالجة الصور الرقمية" title="معالجة الصور الرقمية" href="/1/61" coords="2484,1860,2193,2070" shape="rect">
+                </map>
+                <hr>
+                <img src="{{ major.second_plan_img.url }}" usemap="#image-map2" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.second_plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map2">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/1/11" coords="1325,257,1099,316" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/1/18" coords="1376,258,1602,319" shape="rect">
+                    <area target="_self" alt="مختبر الفيزياء 1" title="مختبر الفيزياء 1" href="/1/16" coords="1654,257,1880,318" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/1/15" coords="1935,258,2158,319" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/1/4" coords="2438,257,2215,316" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/1/10" coords="773,258,545,319" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/1/5" coords="254,257,28,318" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/1/22" coords="254,339,28,400" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/1/7" coords="249,421,23,478" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/1/20" coords="780,415,552,476" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/1/12" coords="1325,395,1096,456" shape="rect">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="/1/19" coords="1605,398,1376,459" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/1/17" coords="2158,393,1935,454" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/1/6" coords="2438,391,2215,452" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/1/27" coords="1889,531,1666,590" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/1/26" coords="1618,531,1390,590" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/1/33" coords="1318,535,1117,590" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/1/23" coords="1087,555,864,614" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/1/21" coords="559,565,333,626" shape="rect">
+                    <area target="_self" alt="البرمجة بلغة الكينونة" title="البرمجة بلغة الكينونة" href="/1/45" coords="326,678,100,739" shape="rect">
+                    <area target="_self" alt="تراكيب البيانات والخوارزميات" title="تراكيب البيانات والخوارزميات" href="/1/48" coords="559,675,333,736" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/1/43" coords="796,680,570,739" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/1/36" coords="1047,683,823,740" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/1/34" coords="1315,667,1117,724" shape="rect">
+                    <area target="_self" alt="مختبر دوائر كهربائية" title="مختبر دوائر كهربائية" href="/1/35" coords="1605,660,1383,718" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/1/37" coords="1892,660,1668,721" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/1/14" coords="2438,646,2212,704" shape="rect">
+                    <area target="_self" alt="إلكترونيات رقمية" title="إلكترونيات رقمية" href="/1/40" coords="2151,813,1926,871" shape="rect">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="/1/41" coords="1878,809,1654,870" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/1/38" coords="1611,800,1386,859" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/1/28" coords="1006,822,782,878" shape="rect">
+                    <area target="_self" alt="مختبر تصميم المنطق الرقمي" title="مختبر تصميم المنطق الرقمي" href="/1/44" coords="737,817,513,878" shape="rect">
+                    <area target="_self" alt="الذكاء الاصطناعي" title="الذكاء الاصطناعي" href="/1/24" coords="1128,919,918,973" shape="rect">
+                    <area target="_self" alt="معمارية الحاسوب وتنظيمه" title="معمارية الحاسوب وتنظيمه" href="/1/50" coords="1367,956,1144,1012" shape="rect">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="/1/42" coords="1611,932,1388,991" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/1/39" coords="1885,933,1661,992" shape="rect">
+                    <area target="_self" alt="اساسيات شبكات الحاسوب" title="اساسيات شبكات الحاسوب" href="/1/29" coords="2188,1066,1962,1127" shape="rect">
+                    <area target="_self" alt="مختبر معمارية الحاسوب وتنظيمه" title="مختبر معمارية الحاسوب وتنظيمه" href="/1/51" coords="1275,1098,1051,1156" shape="rect">
+                    <area target="_self" alt="انظمة قواعد البيانات" title="انظمة قواعد البيانات" href="/1/54" coords="559,1116,333,1174" shape="rect">
+                    <area target="_self" alt="نظم التشغيل" title="نظم التشغيل" href="/1/53" coords="235,1073,9,1132" shape="rect">
+                    <area target="_self" alt="الانظمة المضمنة" title="الانظمة المضمنة" href="/1/59" coords="233,1166,9,1227" shape="rect">
+                    <area target="_self" alt="مختبر الانظمة المضمنة" title="مختبر الانظمة المضمنة" href="/1/60" coords="224,1258,-2,1319" shape="rect">
+                    <area target="_self" alt="مختبر انظمة قواعد البيانات" title="مختبر انظمة قواعد البيانات" href="/1/55" coords="561,1242,337,1301" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات المتوازية" title="انظمة المعالجات المتوازية" href="/1/57" coords="1526,1226,1315,1280" shape="rect">
+                    <area target="_self" alt="اساسيات الامن السيبراني" title="اساسيات الامن السيبراني" href="/1/31" coords="1914,1198,1691,1256" shape="rect">
+                    <area target="_self" alt="مختبر شبكات الحاسوب" title="مختبر شبكات الحاسوب" href="/1/32" coords="2197,1199,1973,1256" shape="rect">
+                    <area target="_self" alt="بروتوكولات الشبكات" title="بروتوكولات الشبكات" href="/1/30" coords="2479,1197,2255,1256" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/1/8" coords="2438,1398,2212,1459" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/1/9" coords="2438,1485,2215,1546" shape="rect">
+                    <area target="_self" alt="معمارية الحواسيب المتقدمة" title="معمارية الحواسيب المتقدمة" href="/1/56" coords="1528,1100,1302,1161" shape="rect">
+                    <area target="_self" alt="موضوعات خاصة" title="موضوعات خاصة" href="/1/65" coords="1010,1347,843,1394" shape="rect">
+                    <area target="_self" alt="المنطق المشوش" title="المنطق المشوش" href="/1/64" coords="823,1514,656,1563" shape="rect">
+                    <area target="_self" alt="معالجة الصور الرقمية" title="معالجة الصور الرقمية" href="/1/61" coords="827,1346,660,1396" shape="rect">
+                </map>
+            {% elif major.id == 2 %}
+                <img src="{{ major.plan_img.url }}" usemap="#image-map" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/2/4" coords="3453,318,3168,497" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/2/6" coords="3451,566,3171,748" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/2/5" coords="3100,315,2812,503" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/2/8" coords="3103,554,2812,731" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/2/7" coords="1205,554,923,734" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/2/9" coords="638,1277,350,1478" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/2/10" coords="960,400,90" shape="circle">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/2/14" coords="3456,810,3168,993" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/2/11" coords="2385,315,2103,491" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/2/12" coords="2403,557,2118,740" shape="rect">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/2/13" coords="2409,802,2122,985" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/2/15" coords="2066,311,1772,491" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/2/17" coords="2066,556,1772,736" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/2/18" coords="1731,551,1447,734" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/2/20" coords="1447,319,1159,505" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/2/21" coords="768,310,481,495" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/2/118" coords="335,1279,50,1486" shape="rect">
+                    <area target="_self" alt="مختبر الفيزياء 1" title="مختبر الفيزياء 1" href="/2/16" coords="1605,411,90" shape="circle">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="/2/19" coords="1304,646,84" shape="circle">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/2/22" coords="261,396,89" shape="circle">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/2/23" coords="2459,502,2747,319" shape="rect">
+                    <area target="_self" alt="الذكاء الاصطناعي" title="الذكاء الاصطناعي" href="/2/24" coords="2728,545,2440,728" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/2/26" coords="2750,805,2456,985" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/2/27" coords="2781,806,3072,989" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/2/28" coords="2558,1053,2846,1232" shape="rect">
+                    <area target="_self" alt="اساسيات شبكات الحاسوب" title="اساسيات شبكات الحاسوب" href="/2/29" coords="2905,1054,3196,1233" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/2/36" coords="2109,1056,2397,1238" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/2/39" coords="2261,1326,2552,1509" shape="rect">
+                    <area target="_self" alt="بروتوكولات الشبكات" title="بروتوكولات الشبكات" href="/2/30" coords="2564,1326,2855,1515" shape="rect">
+                    <area target="_self" alt="اساسيات الامن السيبراني" title="اساسيات الامن السيبراني" href="/2/31" coords="2911,1329,3205,1512" shape="rect">
+                    <area target="_self" alt="برمجة الشبكات" title="برمجة الشبكات" href="/2/71" coords="2697,1627,2409,1812" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/2/33" coords="2063,804,1775,986" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/2/37" coords="2063,1051,1772,1231" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/2/34" coords="1728,805,1443,981" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/2/38" coords="1734,1053,1447,1233" shape="rect">
+                    <area target="_self" alt="البرمجة بلغة الكينونة" title="البرمجة بلغة الكينونة" href="/2/45" coords="911,555,623,737" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/2/43" coords="601,555,310,738" shape="rect">
+                    <area target="_self" alt="تراكيب البيانات والخوارزميات" title="تراكيب البيانات والخوارزميات" href="/2/48" coords="911,807,623,990" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/2/46" coords="595,821,310,988" shape="rect">
+                    <area target="_self" alt="نظم التشغيل" title="نظم التشغيل" href="/2/53" coords="1236,1051,948,1231" shape="rect">
+                    <area target="_self" alt="انظمة قواعد البيانات" title="انظمة قواعد البيانات" href="/2/54" coords="908,1055,620,1235" shape="rect">
+                    <area target="_self" alt="معمارية الحاسوب وتنظيمه" title="معمارية الحاسوب وتنظيمه" href="/2/50" coords="601,1055,313,1235" shape="rect">
+                    <area target="_self" alt="مختبر شبكات الحاسوب" title="مختبر شبكات الحاسوب" href="/2/32" coords="3345,1422,90" shape="circle">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="/2/42" coords="2115,1415,90" shape="circle">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="/2/41" coords="1914,1411,96" shape="circle">
+                    <area target="_self" alt="مختبر دوائر كهربائية" title="مختبر دوائر كهربائية" href="/2/35" coords="1295,891,90" shape="circle">
+                    <area target="_self" alt="مختبر تصميم المنطق الرقمي" title="مختبر تصميم المنطق الرقمي" href="/2/44" coords="146,640,99" shape="circle">
+                    <area target="_self" alt="مختبر انظمة معالجات دقيقة وحاكمات" title="مختبر انظمة معالجات دقيقة وحاكمات" href="/2/47" coords="143,905,99" shape="circle">
+                    <area target="_self" alt="مختبر معمارية الحاسوب وتنظيمه" title="مختبر معمارية الحاسوب وتنظيمه" href="/2/51" coords="143,1140,102" shape="circle">
+                    <area target="_self" alt="مختبر انظمة قواعد البيانات" title="مختبر انظمة قواعد البيانات" href="/2/55" coords="772,1397,99" shape="circle">
+                    <area target="_self" alt="موضوعات خاصة في هندسة انظمة وامن الشبكات" title="موضوعات خاصة في هندسة انظمة وامن الشبكات" href="/2/152" coords="1765,1942,2053,2112" shape="rect">
+                    <area target="_self" alt="نمذجة ومحاكاة" title="نمذجة ومحاكاة" href="/2/153" coords="1440,1940,1731,2113" shape="rect">
+                    <area href alt="متطلبات الجامعة الاختيارية" title="متطلبات الجامعة الاختيارية" coords="2848,1939,3126,2112" shape="rect" data-bs-toggle="modal" data-bs-target="#optionalSubjects">
+                </map>
+                <hr>
+                <img src="{{ major.second_plan_img.url }}" usemap="#image-map2" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.second_plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map2">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/2/4" coords="2457,252,2228,313" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/2/6" coords="2457,386,2228,447" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/2/5" coords="269,251,43,312" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/2/7" coords="269,413,43,474" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/2/10" coords="789,254,561,313" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/2/9" coords="269,1224,43,1287" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/2/14" coords="2454,636,2228,699" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/2/15" coords="2176,253,1950,312" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/2/17" coords="2176,389,1950,450" shape="rect">
+                    <area target="_self" alt="مختبر الفيزياء 1" title="مختبر الفيزياء 1" href="/2/16" coords="1896,250,1668,311" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/2/18" coords="1616,250,1392,313" shape="rect">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="/2/19" coords="1616,392,1392,450" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/2/11" coords="1338,251,1112,312" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/2/12" coords="1340,391,1110,452" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/2/20" coords="796,412,568,473" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/2/22" coords="269,331,43,394" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/2/27" coords="1907,526,1684,585" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/2/26" coords="1634,524,1408,585" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/2/33" coords="1331,531,1132,583" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/2/23" coords="1103,549,877,610" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/2/21" coords="574,561,346,620" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/2/37" coords="1907,655,1679,713" shape="rect">
+                    <area target="_self" alt="مختبر دوائر كهربائية" title="مختبر دوائر كهربائية" href="/2/35" coords="1623,654,1397,713" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/2/34" coords="1331,659,1132,718" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/2/36" coords="1087,679,859,738" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/2/43" coords="812,674,586,735" shape="rect">
+                    <area target="_self" alt="تراكيب البيانات والخوارزميات" title="تراكيب البيانات والخوارزميات" href="/2/48" coords="572,670,348,731" shape="rect">
+                    <area target="_self" alt="البرمجة بلغة الكينونة" title="البرمجة بلغة الكينونة" href="/2/45" coords="342,671,116,735" shape="rect">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="/2/41" coords="1896,805,1668,864" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/2/38" coords="1627,796,1399,857" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/2/28" coords="1376,871,1151,930" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/2/46" coords="1024,824,796,885" shape="rect">
+                    <area target="_self" alt="مختبر تصميم المنطق الرقمي" title="مختبر تصميم المنطق الرقمي" href="/2/44" coords="753,822,525,885" shape="rect">
+                    <area target="_self" alt="مختبر انظمة معالجات دقيقة وحاكمات" title="مختبر انظمة معالجات دقيقة وحاكمات" href="/2/47" coords="796,942,1022,1007" shape="rect">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="/2/42" coords="1627,927,1401,986" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/2/39" coords="1903,926,1675,987" shape="rect">
+                    <area target="_self" alt="اساسيات شبكات الحاسوب" title="اساسيات شبكات الحاسوب" href="/2/29" coords="1928,1046,1700,1107" shape="rect">
+                    <area target="_self" alt="معمارية الحاسوب وتنظيمه" title="معمارية الحاسوب وتنظيمه" href="/2/50" coords="1259,1064,1033,1123" shape="rect">
+                    <area target="_self" alt="انظمة قواعد البيانات" title="انظمة قواعد البيانات" href="/2/54" coords="371,1108,552,1108,570,1128,570,1153,554,1165,520,1165,366,1165,351,1151,348,1126" shape="poly">
+                    <area target="_self" alt="نظم التشغيل" title="نظم التشغيل" href="/2/53" coords="326,1064,348,1080,351,1098,344,1114,328,1123,152,1123,129,1107,129,1082,147,1064" shape="poly">
+                    <area target="_self" alt="مختبر انظمة قواعد البيانات" title="مختبر انظمة قواعد البيانات" href="/2/55" coords="574,1238,353,1297" shape="rect">
+                    <area target="_self" alt="مختبر معمارية الحاسوب وتنظيمه" title="مختبر معمارية الحاسوب وتنظيمه" href="/2/51" coords="1252,1172,1029,1231" shape="rect">
+                    <area target="_self" alt="اساسيات الامن السيبراني" title="اساسيات الامن السيبراني" href="/2/31" coords="1539,1168,1313,1226" shape="rect">
+                    <area target="_self" alt="مختبر شبكات الحاسوب" title="مختبر شبكات الحاسوب" href="/2/32" coords="1919,1164,1697,1223" shape="rect">
+                    <area target="_self" alt="بروتوكولات الشبكات" title="بروتوكولات الشبكات" href="/2/30" coords="2179,1166,1953,1227" shape="rect">
+                    <area target="_self" alt="برمجة الشبكات" title="برمجة الشبكات" href="/2/71" coords="2488,1264,2285,1321" shape="rect">
+                    <area target="_self" alt="موضوعات خاصة في هندسة انظمة وامن الشبكات" title="موضوعات خاصة في هندسة انظمة وامن الشبكات" href="/2/152" coords="943,1073,780,1116" shape="rect">
+                    <area target="_self" alt="نمذجة ومحاكاة" title="نمذجة ومحاكاة" href="/2/153" coords="613,1073,775,1116" shape="rect">
+                </map>
+            {% elif major.id == 4 %}
+                <img src="{{ major.plan_img.url }}" usemap="#image-map" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/4/4" coords="675,1055,490,1145" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/4/6" coords="456,1056,268,1146" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/4/5" coords="676,1189,490,1277" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/4/8" coords="454,1185,268,1276" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/4/7" coords="235,1186,49,1276" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/4/10" coords="234,274,49,366" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/4/9" coords="1779,274,1593,366" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/4/21" coords="235,404,49,498" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/4/11" coords="897,145,711,235" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/4/12" coords="678,143,490,235" shape="rect">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/4/13" coords="456,142,270,238" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/4/22" coords="235,144,47,236" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/4/15" coords="1559,144,1372,235" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/4/17" coords="1557,274,1372,364" shape="rect">
+                    <area target="_self" alt="مختبر الفيزياء 1" title="مختبر الفيزياء 1" href="/4/16" coords="1338,274,1152,366" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/4/18" coords="2000,145,1813,235" shape="rect">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="/4/19" coords="2000,275,1813,365" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/4/118" coords="1777,144,1591,234" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/4/23" coords="1116,144,929,233" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/4/26" coords="675,273,490,363" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/4/27" coords="456,274,270,364" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/4/28" coords="676,406,490,496" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/4/33" coords="1559,405,1372,495" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/4/34" coords="1777,405,1593,493" shape="rect">
+                    <area target="_self" alt="مختبر دوائر كهربائية" title="مختبر دوائر كهربائية" href="/4/35" coords="2001,405,1813,495" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/4/37" coords="1336,406,1152,496" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/4/36" coords="1559,536,1372,625" shape="rect">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="/4/41" coords="1117,404,931,496" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/4/38" coords="1779,535,1593,625" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/4/39" coords="1559,666,1372,755" shape="rect">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="/4/42" coords="1779,665,1593,756" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/4/43" coords="234,533,47,626" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/4/46" coords="235,665,49,755" shape="rect">
+                    <area target="_self" alt="مختبر انظمة معالجات دقيقة وحاكمات" title="مختبر انظمة معالجات دقيقة وحاكمات" href="/4/47" coords="456,666,268,755" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/4/20" coords="456,403,268,495" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/4/14" coords="235,1054,49,1148" shape="rect">
+                    <area target="_self" alt="مختبر الات كهربائية" title="مختبر الات كهربائية" href="/4/77" coords="2001,534,1813,626" shape="rect">
+                    <area target="_self" alt="الكترونيات القدرة" title="الكترونيات القدرة" href="/4/78" coords="1334,535,1150,626" shape="rect">
+                    <area target="_self" alt="القيادة الكهربائية" title="القيادة الكهربائية" href="/4/80" coords="1338,666,1152,755" shape="rect">
+                    <area target="_self" alt="استاتيكا" title="استاتيكا" href="/4/101" coords="895,273,709,365" shape="rect">
+                    <area target="_self" alt="مكونات الآلة وآلياتها" title="مكونات الآلة وآلياتها" href="/4/102" coords="899,405,713,496" shape="rect">
+                    <area target="_self" alt="مختبر القيادة الكهربائية" title="مختبر القيادة الكهربائية" href="/4/103" coords="1116,666,931,756" shape="rect">
+                    <area target="_self" alt="ديناميكا واهتزازات" title="ديناميكا واهتزازات" href="/4/117" coords="893,539,712,622" shape="rect">
+                    <area target="_self" alt="مختبر الكترونيات القدرة" title="مختبر الكترونيات القدرة" href="/4/177" coords="969,537,1079,539,1107,555,1112,588,1098,617,1065,624,966,622,935,598,939,560" shape="poly">
+                    <area target="_self" alt="المجسات والمشغلات" title="المجسات والمشغلات" href="/4/104" coords="230,797,53,884" shape="rect">
+                    <area target="_self" alt="مختبر المجسات والمشغلات" title="مختبر المجسات والمشغلات" href="/4/105" coords="306,799,414,799,443,814,452,839,447,862,420,884,309,884,290,875,272,850,279,815" shape="poly">
+                    <area target="_self" alt="مختبر القيادة الرئوية والهيدروليكية" title="مختبر القيادة الرئوية والهيدروليكية" href="/4/113" coords="747,795,855,794,892,823,892,857,873,879,852,886,756,886,723,871,714,833,729,810" shape="poly">
+                    <area target="_self" alt="القيادة الرئوية والهيدروليكية" title="القيادة الرئوية والهيدروليكية" href="/4/109" coords="933,797,1112,882" shape="rect">
+                    <area target="_self" alt="التجهيزات الصناعية والتحكم" title="التجهيزات الصناعية والتحكم" href="/4/107" coords="1333,797,1152,884" shape="rect">
+                    <area target="_self" alt="اجهزة الحاكمات المنطقية المبرمجة وبرمجتها" title="اجهزة الحاكمات المنطقية المبرمجة وبرمجتها" href="/4/106" coords="1374,797,1553,884" shape="rect">
+                    <area target="_self" alt="موضوعات خاصة في هندسة الميكاترونكس" title="موضوعات خاصة في هندسة الميكاترونكس" href="/4/111" coords="933,929,1112,1014" shape="rect">
+                    <area target="_self" alt="مختبر التجهيزات الصناعية والتحكم" title="مختبر التجهيزات الصناعية والتحكم" href="/4/108" coords="1193,928,1300,928,1318,937,1333,957,1334,978,1327,997,1311,1009,1291,1015,1188,1015,1164,1002,1154,977,1157,953,1168,935" shape="poly">
+                    <area target="_self" alt="مختبر اجهزة الحاكمات المنطقية المبرمجة وبرمجتها" title="مختبر اجهزة الحاكمات المنطقية المبرمجة وبرمجتها" href="/4/179" coords="1412,924,1521,924,1548,942,1557,968,1553,991,1535,1013,1501,1018,1401,1016,1381,1000,1372,971,1380,946,1390,931" shape="poly">
+                    <area target="_self" alt="التحكم الاشرافي والتقاط البيانات" title="التحكم الاشرافي والتقاط البيانات" href="/4/159" coords="1773,798,1596,880" shape="rect">
+                    <area target="_self" alt="تصميم عناصر الالة والتصميم بالحاسوب" title="تصميم عناصر الالة والتصميم بالحاسوب" href="/4/161" coords="1596,927,1773,1016" shape="rect">
+                    <area target="_self" alt="هندسة الروبوتات" title="هندسة الروبوتات" href="/4/163" coords="673,929,494,1012" shape="rect">
+                    <area href alt="متطلبات الجامعة الاختيارية" title="متطلبات الجامعة الاختيارية" coords="895,1050,709,1149" shape="rect" data-bs-toggle="modal" data-bs-target="#optionalSubjects">
+                </map>
+            {% elif major.id == 5 %}
+                <img src="{{ major.plan_img.url }}" usemap="#image-map" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/5/11" coords="1325,152,1141,257" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/5/12" coords="1526,318,1343,421" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/5/15" coords="2007,608,1821,713" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/5/17" coords="2007,755,1824,861" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/5/18" coords="1788,158,1600,264" shape="rect">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/5/13" coords="1763,316,1575,422" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/5/22" coords="855,163,671,262" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/5/21" coords="642,158,456,266" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/5/20" coords="429,307,239,414" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/5/118" coords="754,611,570,714" shape="rect">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="/5/19" coords="1499,213,51" shape="circle">
+                    <area target="_self" alt="مختبر الفيزياء 1" title="مختبر الفيزياء 1" href="/5/16" coords="1725,666,49" shape="circle">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/5/4" coords="2005,161,1821,266" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/5/6" coords="2001,321,1817,424" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/5/5" coords="226,158,40,265" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/5/10" coords="425,161,239,268" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/5/7" coords="221,300,35,405" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/5/8" coords="225,433,38,538" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/5/14" coords="2007,478,1812,588" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/5/23" coords="1327,303,1139,409" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/5/26" coords="1537,474,1349,580" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/5/27" coords="1748,473,1560,580" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/5/33" coords="1327,474,1139,580" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/5/34" coords="1325,630,1139,735" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/5/37" coords="1535,631,1347,736" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/5/36" coords="1094,316,908,422" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/5/28" coords="857,320,673,423" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/5/43" coords="629,317,441,424" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/5/46" coords="633,459,445,566" shape="rect">
+                    <area target="_self" alt="الكترونيات 2" title="الكترونيات 2" href="/5/86" coords="1813,789,1629,894" shape="rect">
+                    <area target="_self" alt="الكترونيات القدرة" title="الكترونيات القدرة" href="/5/78" coords="1606,790,1421,895" shape="rect">
+                    <area target="_self" alt="قياسات كهربائية و الكترونية" title="قياسات كهربائية و الكترونية" href="/5/81" coords="1407,788,1219,893" shape="rect">
+                    <area target="_self" alt="كهرومغناطيسية 1" title="كهرومغناطيسية 1" href="/5/100" coords="2009,1010,1828,905" shape="rect">
+                    <area target="_self" alt="الات كهربائية 2" title="الات كهربائية 2" href="/5/82" coords="2010,1100,1824,1205" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/5/39" coords="1257,938,1070,1043" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/5/38" coords="975,632,788,730" shape="rect">
+                    <area target="_self" alt="تحليل انظمة القوى الكهربائية 1" title="تحليل انظمة القوى الكهربائية 1" href="/5/84" coords="1061,838,877,944" shape="rect">
+                    <area target="_self" alt="تحليل انظمة القوى الكهربائية 2" title="تحليل انظمة القوى الكهربائية 2" href="/5/90" coords="1061,998,877,1103" shape="rect">
+                    <area target="_self" alt="حماية انظمة القوى الكهربائية" title="حماية انظمة القوى الكهربائية" href="/5/88" coords="852,997,667,1102" shape="rect">
+                    <area target="_self" alt="انظمة النقل و التوزيع الكهربائية" title="انظمة النقل و التوزيع الكهربائية" href="/5/96" coords="642,1000,454,1105" shape="rect">
+                    <area target="_self" alt="انظمة التجهيزات و التمديدات الكهربائية و الامان" title="انظمة التجهيزات و التمديدات الكهربائية و الامان" href="/5/92" coords="434,997,246,1104" shape="rect">
+                    <area target="_self" alt="التشغيل والتحكم في انظمة القوى الكهربائية" title="التشغيل والتحكم في انظمة القوى الكهربائية" href="/5/99" coords="1381,1174,1193,1277" shape="rect">
+                    <area target="_self" alt="وثوقية انظمة القوى الكهربائية" title="وثوقية انظمة القوى الكهربائية" href="/5/97" coords="736,1154,550,1261" shape="rect">
+                    <area target="_self" alt="هندسة الضغط العالي" title="هندسة الضغط العالي" href="/5/98" coords="541,1157,355,1262" shape="rect">
+                    <area target="_self" alt="مختبر دوائر كهربائية" title="مختبر دوائر كهربائية" href="/5/35" coords="1045,565,52" shape="circle">
+                    <area target="_self" alt="مختبر اتصالات و تراسل البيانات" title="مختبر اتصالات و تراسل البيانات" href="/5/94" coords="825,517,51" shape="circle">
+                    <area target="_self" alt="مختبر تصميم المنطق الرقمي" title="مختبر تصميم المنطق الرقمي" href="/5/44" coords="695,528,50" shape="circle">
+                    <area target="_self" alt="مختبر انظمة معالجات دقيقة وحاكمات" title="مختبر انظمة معالجات دقيقة وحاكمات" href="/5/47" coords="501,659,49" shape="circle">
+                    <area target="_self" alt="مختبر الات كهربائية" title="مختبر الات كهربائية" href="/5/77" coords="1045,769,50" shape="circle">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="/5/41" coords="1141,850,47" shape="circle">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="/5/42" coords="1349,986,50" shape="circle">
+                    <area target="_self" alt="مختبر الكترونيات القدرة" title="مختبر الكترونيات القدرة" href="/5/79" coords="1447,1011,45" shape="circle">
+                    <area target="_self" alt="مختبر انظمة القوى الكهربائية" title="مختبر انظمة القوى الكهربائية" href="/5/91" coords="781,892,50" shape="circle">
+                    <area target="_self" alt="نمذجة و محاكاة انظمة القوى" title="نمذجة و محاكاة انظمة القوى" href="/5/95" coords="1130,1231,50" shape="circle">
+                    <area target="_self" alt="مختبر حماية انظمة القوى الكهربائية" title="مختبر حماية انظمة القوى الكهربائية" href="/5/89" coords="797,1205,48" shape="circle">
+                    <area target="_self" alt="مختبر انظمة التجهيزات و التمديدات الكهربائية و الامان" title="مختبر انظمة التجهيزات و التمديدات الكهربائية و الامان" href="/5/93" coords="302,1196,49" shape="circle">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/5/9" coords="425,703,237,810" shape="rect">
+                    <area href alt="متطلبات الجامعة الاختيارية" title="متطلبات الجامعة الاختيارية" coords="24,1298,239,1406" shape="rect" data-bs-toggle="modal" data-bs-target="#optionalSubjects">
+                </map>
+                <hr>
+                <img src="{{ major.second_plan_img.url }}" usemap="#image-map2" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.second_plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map2">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/5/11" coords="1261,144,1060,208" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/5/12" coords="1263,261,1060,325" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/5/15" coords="1646,144,1445,207" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/5/17" coords="1646,260,1445,323" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/5/18" coords="236,673,30,742" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/5/118" coords="236,591,30,661" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/5/22" coords="233,515,30,583" shape="rect">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/5/13" coords="1312,346,1168,415" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/5/21" coords="2009,316,1837,382" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/5/20" coords="2201,316,2036,377" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/5/10" coords="2076,174,1850,236" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/5/4" coords="1218,961,1062,1019" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/5/6" coords="1218,1033,1064,1088" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/5/5" coords="1392,960,1233,1017" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/5/8" coords="1392,1030,1233,1086" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/5/14" coords="1218,1098,1062,1155" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/5/9" coords="1392,1099,1233,1157" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/5/7" coords="1566,1034,1407,1091" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/5/23" coords="1009,144,833,210" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/5/26" coords="1155,346,1013,414" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/5/27" coords="1466,345,1326,415" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/5/33" coords="1621,343,1479,413" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/5/34" coords="1398,444,1221,505" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/5/37" coords="1621,438,1479,507" shape="rect">
+                    <area target="_self" alt="الكترونيات 2" title="الكترونيات 2" href="/5/86" coords="1619,528,1479,594" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="/5/38" coords="1398,533,1218,594" shape="rect">
+                    <area target="_self" alt="كهرومغناطيسية 1" title="كهرومغناطيسية 1" href="/5/100" coords="994,441,831,507" shape="rect">
+                    <area target="_self" alt="الات كهربائية 2" title="الات كهربائية 2" href="/5/82" coords="729,518,549,583" shape="rect">
+                    <area target="_self" alt="تحليل انظمة القوى الكهربائية 1" title="تحليل انظمة القوى الكهربائية 1" href="/5/84" coords="998,636,831,697" shape="rect">
+                    <area target="_self" alt="تحليل انظمة القوى الكهربائية 2" title="تحليل انظمة القوى الكهربائية 2" href="/5/90" coords="996,767,835,835" shape="rect">
+                    <area target="_self" alt="حماية انظمة القوى الكهربائية" title="حماية انظمة القوى الكهربائية" href="/5/88" coords="803,770,646,835" shape="rect">
+                    <area target="_self" alt="انظمة النقل و التوزيع الكهربائية" title="انظمة النقل و التوزيع الكهربائية" href="/5/96" coords="630,770,473,833" shape="rect">
+                    <area target="_self" alt="انظمة التجهيزات و التمديدات الكهربائية و الامان" title="انظمة التجهيزات و التمديدات الكهربائية و الامان" href="/5/92" coords="441,769,229,841" shape="rect">
+                    <area target="_self" alt="وثوقية انظمة القوى الكهربائية" title="وثوقية انظمة القوى الكهربائية" href="/5/97" coords="704,853,545,919" shape="rect">
+                    <area target="_self" alt="هندسة الضغط العالي" title="هندسة الضغط العالي" href="/5/98" coords="509,853,327,918" shape="rect">
+                    <area target="_self" alt="التشغيل والتحكم في انظمة القوى الكهربائية" title="التشغيل والتحكم في انظمة القوى الكهربائية" href="/5/99" coords="814,927,655,994" shape="rect">
+                    <area target="_self" alt="نمذجة و محاكاة انظمة القوى" title="نمذجة و محاكاة انظمة القوى" href="/5/95" coords="996,925,835,993" shape="rect">
+                    <area target="_self" alt="الكترونيات القدرة" title="الكترونيات القدرة" href="/5/78" coords="1801,351,1665,417" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/5/43" coords="2006,442,1835,510" shape="rect">
+                    <area target="_self" alt="قياسات كهربائية و الكترونية" title="قياسات كهربائية و الكترونية" href="/5/81" coords="1805,529,1668,592" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/5/46" coords="2009,615,1837,681" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/5/36" coords="1752,728,1583,798" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/5/28" coords="1439,768,1263,842" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/5/39" coords="1769,842,1572,914" shape="rect">
+                </map>
+            {% elif major.id == 9 %}
+                <img src="{{ major.plan_img.url }}" usemap="#image-map" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div>
+                <map name="image-map">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/9/11" coords="1829,242,1688,332" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/9/12" coords="1825,342,1683,437" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/9/15" coords="1356,1129,1215,1225" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/9/17" coords="1358,1238,1214,1331" shape="rect">
+                    <area target="_self" alt="مختبر فيزياء 1" title="مختبر فيزياء 1" href="###########" coords="1198,1131,1056,1224" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/9/22" coords="702,1029,560,1121" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/9/18" coords="1509,1131,1365,1224" shape="rect">
+                    <area target="_self" alt="مختبر الكيمياء العامة" title="مختبر الكيمياء العامة" href="###########" coords="1510,1237,1368,1330" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/9/118" coords="1198,1232,1056,1326" shape="rect">
+                    <area target="_self" alt="/9/20" title="/9/20" href="رسم هندسي" coords="1027,232,887,324" shape="rect">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/9/13" coords="1822,791,1680,884" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/9/4" coords="1039,1029,897,1121" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/9/6" coords="1041,1132,900,1224" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/9/14" coords="1041,1237,898,1330" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/9/5" coords="870,1132,727,1222" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/9/8" coords="871,1237,731,1330" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/9/7" coords="700,1133,560,1223" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/9/9" coords="705,1235,561,1328" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/9/10" coords="861,233,721,325" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/9/21" coords="860,355,719,445" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/9/33" coords="1509,336,1366,427" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/9/34" coords="1509,453,1368,546" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="##########" coords="1503,568,1359,662" shape="rect">
+                    <area target="_self" alt="مختبر الدوائر الكهربائية" title="مختبر الدوائر الكهربائية" href="##########" coords="1349,452,1209,544" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/9/37" coords="1190,457,1048,545" shape="rect">
+                    <area target="_self" alt="إلكترونيات رقمية" title="إلكترونيات رقمية" href="/9/40" coords="1031,451,890,545" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/9/43" coords="861,461,719,549" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/9/28" coords="702,460,561,552" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/9/36" coords="704,353,561,444" shape="rect">
+                    <area target="_self" alt="مختبر الكترونيات 1" title="مختبر الكترونيات 1" href="#########" coords="1192,572,1049,663" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/9/39" coords="1034,568,888,665" shape="rect">
+                    <area target="_self" alt="الكترونيات 2" title="الكترونيات 2" href="/9/86" coords="1193,688,1051,780" shape="rect">
+                    <area target="_self" alt="مختبر الكترونيات 2" title="مختبر الكترونيات 2" href="#########" coords="1034,684,892,777" shape="rect">
+                    <area target="_self" alt="مختبر انظمة التحكم" title="مختبر انظمة التحكم" href="#########" coords="1197,1029,1053,1121" shape="rect">
+                    <area target="_self" alt="مختبر تصميم المنطق الرقمي" title="مختبر تصميم المنطق الرقمي" href="#########" coords="860,683,719,777" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/9/46" coords="858,796,719,886" shape="rect">
+                    <area target="_self" alt="مختبر انظمة المعالجة الدقيقة" title="مختبر انظمة المعالجة الدقيقة" href="#########" coords="704,793,560,886" shape="rect">
+                    <area target="_self" alt="اساسيات شبكات الحاسوب" title="اساسيات شبكات الحاسوب" href="/9/29" coords="702,569,560,662" shape="rect">
+                    <area target="_self" alt="مختبر شبكات الحاسوب" title="مختبر شبكات الحاسوب" href="#########" coords="702,685,560,778" shape="rect">
+                    <area target="_self" alt="اتصالات تشابهية" title="اتصالات تشابهية" href="/9/125" coords="538,232,395,324" shape="rect">
+                    <area target="_self" alt="معالجة الاشارات الرقمية" title="معالجة الاشارات الرقمية" href="/9/127" coords="531,353,392,446" shape="rect">
+                    <area target="_self" alt="اتصالات رقمية" title="اتصالات رقمية" href="/9/128" coords="327,354,185,444" shape="rect">
+                    <area target="_self" alt="اتصالات بصرية" title="اتصالات بصرية" href="/9/135" coords="190,916,49,1008" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/9/27" coords="1822,682,1680,773" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/9/26" coords="1822,919,1680,1009" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/9/23" coords="700,233,561,325" shape="rect">
+                    <area target="_self" alt="تحليل وسيط" title="تحليل وسيط" href="############" coords="1663,684,1522,776" shape="rect">
+                    <area target="_self" alt="كهرومغناطيسية 1" title="كهرومغناطيسية 1" href="/9/100" coords="1663,794,1522,886" shape="rect">
+                    <area target="_self" alt="كهرومغناطيسية 2" title="كهرومغناطيسية 2" href="/9/119" coords="1664,918,1522,1011" shape="rect">
+                    <area target="_parent" alt="امواج دقيقة" title="امواج دقيقة" href="/9/120" coords="1822,1029,1680,1121" shape="rect">
+                    <area target="_self" alt="هوائيات وانتشار امواج" title="هوائيات وانتشار امواج" href="/9/121" coords="1668,1030,1522,1123" shape="rect">
+                    <area href alt="متطلبات الجامعة الاختيارية" title="متطلبات الجامعة الاختيارية" coords="729,1028,870,1121" shape="rect" data-bs-toggle="modal" data-bs-target="#optionalSubjects">
+                </map>
+                <hr>
+                <img src="{{ major.second_plan_img.url }}" usemap="#image-map2" class="rounded shadow img-fluid">
+                <div class="d-grid">
+                    <a href="{{ major.second_plan_img.url }}" download="{{ major }}" class="btn btn-outline-warning mt-3">تحميل الخطة</a>
+                </div> 
+                <map name="image-map2">
+                    <area target="_self" alt="تفاضل وتكامل 1" title="تفاضل وتكامل 1" href="/9/11" coords="2631,301,2207,433" shape="rect">
+                    <area target="_self" alt="تفاضل وتكامل 2" title="تفاضل وتكامل 2" href="/9/12" coords="2631,543,2207,675" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 1" title="الفيزياء العامة 1" href="/9/15" coords="3430,299,3011,435" shape="rect">
+                    <area target="_self" alt="الفيزياء العامة 2" title="الفيزياء العامة 2" href="/9/17" coords="3011,541,3434,673" shape="rect">
+                    <area target="_self" alt="الكيمياء العامة 1" title="الكيمياء العامة 1" href="/9/18" coords="932,753,508,894" shape="rect">
+                    <area target="_self" alt="البرمجة للمهندسين" title="البرمجة للمهندسين" href="/9/21" coords="4184,652,3827,789" shape="rect">
+                    <area target="_self" alt="رسم هندسي" title="رسم هندسي" href="/9/20" coords="4590,657,4242,790" shape="rect">
+                    <area target="_self" alt="اقتصاد هندسي" title="اقتصاد هندسي" href="/9/118" coords="932,589,504,734" shape="rect">
+                    <area target="_self" alt="مشغل هندسي" title="مشغل هندسي" href="/9/22" coords="508,424,932,565" shape="rect">
+                    <area target="_self" alt="معادلات تفاضلية" title="معادلات تفاضلية" href="/9/13" coords="2733,719,2432,860" shape="rect">
+                    <area target="_self" alt="مهارات الحاسوب والتعليم الالكتروني" title="مهارات الحاسوب والتعليم الالكتروني" href="/9/10" coords="4321,366,3858,490" shape="rect">
+                    <area target="_self" alt="عربي تطبيقي" title="عربي تطبيقي" href="/9/5" coords="1064,1031,738,1145" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 1" title="انجليزي تطبيقي 1" href="/9/4" coords="707,1034,380,1153" shape="rect">
+                    <area target="_self" alt="وطنية" title="وطنية" href="/9/8" coords="1064,1177,738,1296" shape="rect">
+                    <area target="_self" alt="انجليزي تطبيقي 2" title="انجليزي تطبيقي 2" href="/9/6" coords="707,1183,380,1298" shape="rect">
+                    <area target="_self" alt="علوم عسكرية" title="علوم عسكرية" href="/9/9" coords="1064,1323,733,1437" shape="rect">
+                    <area target="_self" alt="الكتابة التقنية والاخلاقيات" title="الكتابة التقنية والاخلاقيات" href="/9/14" coords="711,1322,380,1441" shape="rect">
+                    <area target="_self" alt="الابتكار والريادة والابداع" title="الابتكار والريادة والابداع" href="/9/7" coords="883,1470,548,1589" shape="rect">
+                    <area target="_self" alt="احصاء واحتمالات للهندسة" title="احصاء واحتمالات للهندسة" href="/9/23" coords="2093,303,1744,435" shape="rect">
+                    <area target="_self" alt="جبر خطي" title="جبر خطي" href="/9/26" coords="2402,724,2110,861" shape="rect">
+                    <area target="_self" alt="تقنيات عددية" title="تقنيات عددية" href="/9/27" coords="3050,718,2763,864" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 1" title="دوائر كهربائية 1" href="/9/33" coords="3372,710,3086,865" shape="rect">
+                    <area target="_self" alt="دوائر كهربائية 2" title="دوائر كهربائية 2" href="/9/34" coords="2914,921,2543,1058" shape="rect">
+                    <area target="_self" alt="الكترونيات 1" title="الكترونيات 1" href="/9/37" coords="3372,919,3086,1055" shape="rect">
+                    <area target="_self" alt="الكترونيات 2" title="الكترونيات 2" href="/9/86" coords="3372,1100,3081,1241" shape="rect">
+                    <area target="_self" alt="الات كهربائية 1" title="الات كهربائية 1" href="##########" coords="2909,1113,2543,1239" shape="rect">
+                    <area target="_self" alt="تحليل وسيط" title="تحليل وسيط" href="##########" coords="2079,718,1726,864" shape="rect">
+                    <area target="_self" alt="كهرومغناطيسية 1" title="كهرومغناطيسية 1" href="/9/100" coords="2075,926,1731,1058" shape="rect">
+                    <area target="_self" alt="كهرومغناطيسية 2" title="كهرومغناطيسية 2" href="/9/119" coords="2075,1323,1731,1459" shape="rect">
+                    <area target="_self" alt="امواج دقيقة" title="امواج دقيقة" href="/9/120" coords="2075,1602,1744,1739" shape="rect">
+                    <area target="_self" alt="هوائيات وانتشار امواج" title="هوائيات وانتشار امواج" href="/9/121" coords="1678,1605,1347,1733" shape="rect">
+                    <area target="_self" alt="تصميم المنطق الرقمي" title="تصميم المنطق الرقمي" href="/9/43" coords="4180,923,3823,1060" shape="rect">
+                    <area target="_self" alt="إلكترونيات رقمية" title="إلكترونيات رقمية" href="/9/40" coords="3761,1097,3474,1241" shape="rect">
+                    <area target="_self" alt="انظمة المعالجات الدقيقة والحاكمات" title="انظمة المعالجات الدقيقة والحاكمات" href="/9/46" coords="4180,1278,3827,1414" shape="rect">
+                    <area target="_self" alt="انظمة وإشارات" title="انظمة وإشارات" href="/9/36" coords="3650,1523,3297,1660" shape="rect">
+                    <area target="_self" alt="اتصالات وتراسل بيانات" title="اتصالات وتراسل بيانات" href="/9/28" coords="3002,1608,2631,1758" shape="rect">
+                    <area target="_self" alt="اساسيات شبكات الحاسوب" title="اساسيات شبكات الحاسوب" href="/9/29" coords="3002,1792,2627,1942" shape="rect">
+                    <area target="_self" alt="انظمة التحكم" title="انظمة التحكم" href="/9/39" coords="4515,1766,4105,1920" shape="rect">
+                    <area target="_self" alt="معالجة الاشارات الرقمية" title="معالجة الاشارات الرقمية" href="/9/127" coords="4056,1766,3633,1921" shape="rect">
+                    <area target="_self" alt="اتصالات تشابهية" title="اتصالات تشابهية" href="/9/125" coords="3567,1766,3139,1920" shape="rect">
+                    <area target="_self" alt="اتصالات رقمية" title="اتصالات رقمية" href="/9/128" coords="3748,1992,3342,2138" shape="rect">
+                    <area target="_self" alt="اتصالات بصرية" title="اتصالات بصرية" href="/9/135" coords="2419,2235,2066,2394" shape="rect">
+                </map>
+            {% endif %}
+            
+            {# Modal triggered when pressed over optional subject on the plan it containt links to the subjects as buttons #}
+            <div class="modal fade" id="optionalSubjects" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" dir="rtl">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h1 class="modal-title fs-5 float-start" id="exampleModalLabel">متطلبات الجامعة الاختيارية</h1>
+                        <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row m-2">
+                            {# loop over subjects category and when it's optional subject it checks if the subject has resource or not #}
+                            {% for category in subject_category %}
+                                {% for subject in subjects %}
+                                    {% if subject.category == category %}
+                                        {% if subject.id in resources %}
+                                            <a class="btn btn-warning my-2 col-12" href="{% url 'resource_page' major.id subject.id %}">
+                                                {{ subject }}
+                                            </a>
+                                        {% else %}
+                                            <button type="button" class="btn btn-warning my-2 col-12" href="{% url 'resource_page' major.id subject.id %}" disabled>
+                                                {{ subject }}
+                                            </button>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    {# the script here responsable for making the map over a plan responsive #}
+    <script src="{% static 'imageMapResizer.min.js' %}"></script>
+    <script>
+        imageMapResize();
+    </script>
+{% endblock %}

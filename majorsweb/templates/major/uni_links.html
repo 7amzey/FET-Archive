@@ -1,0 +1,112 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    روابط البلقاء
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static 'major/logo/Logo.png' %}">
+{% endblock %}
+
+{% block body %}
+    {# each div or block is responsable for link #}
+    <div class='row my-5 mx-auto' dir="rtl">
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">            
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="http://appserver.fet.edu.jo:7778/reg_new/index.jsp" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-door-open-fill display-1"></i>
+                    </div>
+                    <div class="col-12 text-center mt-md-4 fs-5">
+                        بوابة الطالب 0
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="http://appsrv1.fet.edu.jo:7777/reg_new/index.jsp" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-door-open-fill display-1"></i>
+                    </div>
+                    <div class="col-12 text-center mt-md-4 fs-5">
+                        بوابة الطالب 1
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="http://appsrv2.fet.edu.jo:7777/reg_new/index.jsp" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-door-open-fill display-1"></i>
+                    </div>
+                    <div class="col-12 text-center mt-md-4 fs-5">
+                        بوابة الطالب 2
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="http://appserver.fet.edu.jo:7778/courses/index.jsp" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-book-fill display-1"></i>
+                    </div>
+                    <div class="col-12 text-center mt-md-4 fs-5">
+                        جريدة المواد 1
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="http://appsrv2.fet.edu.jo:7777/courses/index.jsp" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-book-fill display-1"></i>
+                    </div>
+                    <div class="col-12 text-center mt-md-4 fs-5">
+                        جريدة المواد 2
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="http://s2.ebalqa.courses/nfetmoodle" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-pc-display display-1"></i>
+                    </div>
+                    <div class="col-12 text-center mt-md-4 fs-5">
+                        التعليم الالكتروني
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="https://fetcalculator.up.railway.app/" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-calculator display-1"></i>
+                    </div>
+                    <div class="col-12 text-center fs-5 mt-md-4">
+                        حساب المعدل
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 my-2 p-3 p-md-4">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="row m-0 link-body-emphasis link-underline-opacity-0" href="https://www.bau.edu.jo/taqweem.aspx" target="_blank">
+                    <div class="col-12 text-center align-content-center">
+                        <i class="bi bi-calendar-check-fill display-1"></i>
+                    </div>
+                    <div class="col-12 text-center fs-5 mt-md-4">
+                        التقويم الجامعي
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

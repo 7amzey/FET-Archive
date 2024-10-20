@@ -1,0 +1,56 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    خريطة الجامعة
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static 'major/logo/Logo.png' %}">
+{% endblock %}
+
+{% block body %}
+    {# defined two maps one for each theme #}
+    <div class="row mt-5">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto" id="darkMap" hidden>
+            <img src="{% static 'major/imgs/Maps/darkMap.jpg' %}" alt="University Map" class="img-fluid rounded shadow col-12">
+            <div class="d-grid mt-2 mb-3">
+                <a href="{% static 'major/imgs/Maps/darkMap.jpg' %}" download="darkMap" class="btn btn-outline-warning">تحميل</a>
+            </div>
+        </div>
+        <div class="col-12 col-md-10 col-lg-8 mx-auto" id="lightMap">
+            <img src="{% static 'major/imgs/Maps/lightMap.jpg' %}" alt="University Map" class="img-fluid rounded shadow col-12">
+            <div class="d-grid mt-2 mb-3">
+                <a href="{% static 'major/imgs/Maps/lightMap.jpg' %}" download="lightMap" class="btn btn-outline-warning">تحميل</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    
+    {# change the map dependending on the theme selected #}
+    document.addEventListener('DOMContentLoaded', () => {
+        changeMap();
+    });
+
+    function changeMap() {
+        let darkMap = document.getElementById('darkMap');
+        let lightMap = document.getElementById('lightMap');
+        if(localStorage.getItem('theme')){
+            if(localStorage.getItem('theme') == 'dark'){
+                darkMap.removeAttribute('hidden');
+                lightMap.setAttribute('hidden', '');
+            } else {
+                lightMap.removeAttribute('hidden');
+                darkMap.setAttribute('hidden', '');
+            }
+        }else{
+            darkMap.removeAttribute('hidden');
+            lightMap.setAttribute('hidden', '');
+        }
+    }
+</script>
+{% endblock %}
+

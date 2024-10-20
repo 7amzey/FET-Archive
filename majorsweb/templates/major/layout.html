@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar">
+    <head>
+        <meta name="description" content="موقع يجمع جميع المصادر المتاحة للمواد الاساسية و مواد قسم الهندسة الكهربائية بتفرعاته بهدف تسهيل الوصول للمصادر"/>
+        <meta name="title" content="FET-Archive" />
+        <meta name="language" content="arabic">
+        <meta name="image" property="og:image" content="{% static 'major/logo/Logo.svg' %}"/>
+        <meta property="og:image:type" content="image/svg+xml">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+        {% block link %}{% endblock %}
+        <script type="text/javascript">
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "hb1m6u1pz7");
+        </script>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+
+    {# the class is to make to footer stay at the bottom #}
+    <body class="d-flex flex-column min-vh-100" data-bs-theme="dark">
+
+        {# search modal It must be outside the header because it cause a contradiction #}
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <input type="text" class="form-control col-12" id="searchInput" style="font-family:'Bootstrap-icons';" placeholder="&#xF52A; ابحث عن مادة" dir="rtl">
+                            </div>
+                            <div class="row mt-2" dir="rtl">
+                                <ul class="list-group list-group-flush col-12 p-0" id="searchList">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# new features modal #}
+        <div class="modal fade" id="featuresModal" tabindex="-1" aria-labelledby="featuresModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" dir="rtl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h5 class="modal-title" id="featuresModalLabel">شكل و خصائص جديدة</h5>
+                        <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% block features %}
+                        {% endblock %}
+                    </div>
+                    <div class="modal-footer justify-content-start p-3">
+                        <input type="checkbox" id="dontShowBtn" class="form-check-input">
+                        <label for="featuresCheck" class="form-check">
+                            لا تظهر هذه الرسالة مرة اخرى
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# header for all pages #}
+        <header class="mb-5">
+            {# navbar-exapand is responsable to prevent the navbar to collapse #}
+            <nav class="navbar navbar-expand bg-warning fixed-top text-dark" style="font-weight: 400;">
+                <div class="container-fluid px-md-5 px-3">
+                    <a class="navbar-brand text-dark" href="{% url 'index' %}">
+                        <img type="image/svg+xml" src="{% static 'major/logo/Logo.svg' %}" alt="Logo" class="d-inline-block align-text-center box">
+                        <span class="pt-1">FET-Archive</span>
+                    </a>
+                    <div class="collapse navbar-collapse justify-content-start text-end mt-1" id="navbarTogglerDemo02" dir="rtl">
+                        {# Search button it trigger the modal located above the header #}
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        {# loading spinner #}
+        <div class="container-fluid mt-5" id="pageSpinner" hidden>
+            <div class="d-flex justify-content-center mt-5">
+                <div class="spinner-border mt-5"  style="width:10rem; height: 10rem;" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        {# div to contain all html from other pages #}
+        <div class="container-fluid" id="content">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        {# footer for the pages #}
+        {# mt-auto to make the footer stay at the bottom #}
+        <nav class="navbar py-3 px-lg-5 px-2 bg-warning text-dark mt-auto" style="font-weight: 400;">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <img type="image/svg+xml" src="{% static 'major/logo/Logo.svg' %}" alt="Logo" class="d-inline-block align-text-center">
+                    <span class="pt-1 fs-6 text-dark">by Hamze Younis 2023</span>
+                </div>
+                <div class="justify-content-end text-end">
+                    <i class="bi bi-brightness-high-fill" id="lightIcon" style="cursor:pointer;"></i>
+                    <i class="bi bi-moon-stars-fill" id="darkIcon" style="cursor:pointer;"></i>
+                </div>
+            </div>
+        </nav>
+        <script src="{% static 'dynamics.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        {% block script %}{% endblock %}
+    </body>
+</html>

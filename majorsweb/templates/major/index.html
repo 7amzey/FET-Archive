@@ -1,0 +1,103 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    الصفحة الرئيسية
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static "major/logo/Logo.png" %}">
+{% endblock %}
+
+{% block body %}
+
+    {# block for favorite subjects #}
+    <h2 class="row mt-4 mx-3 pt-3" id="favHeader" dir="rtl">
+        المفضلة:
+    </h2>
+    {# here the padding will be edited in the indexJS file dependending weather there is subject or not #}
+    <div class="row p-5 text-center mx-3 rounded-3" style="border-style: dashed;" dir="rtl" id="favList">
+        <a href="{% url 'majors' %}" class="bi bi-plus-circle fs-1 link-body-emphasis" id="plusIcon"></a>
+    </div>
+        
+    <hr class="mx-3">
+
+
+    {# block for website parts links I have here add custom css classes like {(custom-border), (custom-hover), (box)} each responsable for certain function #}
+    <div class="row mt-3 mx-2" dir="rtl">
+        <div class="col-lg-2 col-md-4 col-6 my-lg-0 my-2">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="d-flex justify-content-center align-items-center link-body-emphasis link-underline-opacity-0" href="{% url 'majors' %}">
+                    التخصصات
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 my-lg-0 my-2">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="d-flex justify-content-center align-items-center link-body-emphasis link-underline-opacity-0" href="{% url 'uniLinks' %}">
+                    روابط البلقاء
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 my-lg-0 my-2">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="d-flex justify-content-center align-items-center link-body-emphasis link-underline-opacity-0" href="{% url 'maps' %}">
+                    خريطة الجامعة
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 my-lg-0 my-2">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="d-flex justify-content-center align-items-center link-body-emphasis link-underline-opacity-0" href="{% url 'teachers' %}">
+                    تواصل مع مدرسك
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 my-lg-0 my-2">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="d-flex justify-content-center align-items-center link-body-emphasis link-underline-opacity-0" href="https://fetcalculator.up.railway.app/" target="_blank">
+                    حساب المعدل
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 my-lg-0 my-2">
+            <div class="custom-border rounded-2 ratio ratio-1x1 custom-hover box">
+                <a class="d-flex justify-content-center align-items-center link-body-emphasis link-underline-opacity-0" href="{% url 'unions' %}">
+                    الاتحادات
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {# block for calendar box and each div in first row have data atrr. that responsable to update state of which is active #}
+    <div class="container-fluid mb-2 mt-5 custom-border rounded-2 overflow-hidden" dir="rtl" id="calendarBox">
+        <div class="row">
+            <div class="col-12 col-lg-4 text-center py-2 mb-lg-3 custom-border-bottom" id="sem1Label" data-active="true">
+                <span>تقويم الفصل الاول</span>
+            </div>
+            <div class="col-12 col-lg-4 text-center py-2 mb-lg-3 custom-border-bottom" id="sem2Label" data-active="false">
+                <span>تقويم الفصل الثاني</span>
+            </div>
+            <div class="col-12 col-lg-4 text-center py-2 mb-2 mb-lg-3 custom-border-bottom" id="sem3Label" data-active="false">
+                <span>تقويم الفصل الصيفي</span>
+            </div>
+        </div>
+        {# for loop to get calendar imgs #}
+        <div class="row">
+            {% for calendar in calendars %}
+                <div class="col-10 col-md-4 mx-auto" id="sem{{ forloop.counter }}">
+                    <img src="{{ calendar.img.url }}" alt="{{ calendar.alt }}" class="img-fluid rounded shadow">
+                    <div class="d-grid">
+                        <a href="{{ calendar.img.url }}" download="{{ calendar.alt }}" class="btn btn-warning mt-2 mb-3">تحميل</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'indexJS.js' %}"></script>
+{% endblock %}

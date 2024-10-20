@@ -1,0 +1,10 @@
+/.vscode
+/majorsweb/static/major/dynamics.js
+/majorsweb/static/major/indexJS.js
+/majorsweb/static/major/teachers_pageJS.js
+/majorsweb/static/major/resource_page.js
+/MajorsProject//MajorsProject/.env
+/majorsweb/static/major/dump.js
+/majorsweb/templates/major/dump.html
+/db.sqlite3
+/MajorsProject/.env

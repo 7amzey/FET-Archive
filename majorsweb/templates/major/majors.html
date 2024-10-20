@@ -1,0 +1,66 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    التخصصات
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static 'major/logo/Logo.png' %}">
+{% endblock %}
+
+{% block body %}
+    {# loop over majors and show the sutiable one depending on the current theme #}
+    <div class="row mx-auto my-5" dir="rtl">
+        {% for major in majors %}
+            <div class="col-5 col-md-4 mx-auto my-4">
+                <div class="col-md-8 col-12 m-auto box" style="height:100%;">
+                    <a class="card shadow-sm h-100 custom-border link-body-emphasis link-underline-opacity-0" href="{% url 'major_page' major.id %}">
+                        <div class="col-8 mx-auto mt-4 mb-3">
+                            <img src="{{ major.lightLogo.url }}" class="card-img-top img-fluid logo-dark" alt="{{ major.name }}" id="lightLogo">
+                            <img src="{{ major.darkLogo.url }}" class="card-img-top img-fluid logo-light" alt="{{ major.name }}" id="darkLogo" hidden>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ major.major }}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    
+    {# here it checks which theme is selected and depend on that it choose which color of logo to show when the page is loaded #}
+    document.addEventListener('DOMContentLoaded', () => {
+        changeLogo();
+    });
+
+    {# the function responsable for change logo color depend on the theme selected #}
+    {# default value will be light logo will be showen because the default theme is dark #}
+    function changeLogo() {
+        let darkLogo = document.getElementsByClassName('logo-dark');
+        let lightLogo = document.getElementsByClassName('logo-light');
+        if(localStorage.getItem('theme')){
+            if(localStorage.getItem('theme') == 'dark'){
+                for(let i = 0; i < darkLogo.length; i++){
+                    lightLogo[i].removeAttribute('hidden');
+                    darkLogo[i].setAttribute('hidden', '');
+                }
+            } else {
+                for(let i = 0; i < darkLogo.length; i++){
+                    darkLogo[i].removeAttribute('hidden');
+                    lightLogo[i].setAttribute('hidden', '');
+                }
+            }
+        }else{
+            for(let i = 0; i < darkLogo.length; i++){
+                lightLogo[i].removeAttribute('hidden');
+                darkLogo[i].setAttribute('hidden', '');
+            }
+        }
+    }
+</script>
+{% endblock %}

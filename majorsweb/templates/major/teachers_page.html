@@ -1,0 +1,48 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    تواصل مع مدرسك
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static 'major/logo/Logo.png' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="my-5 text-center">
+        <h1 class="pt-5">تواصل مع مدرسك</h1>
+    </div>
+
+    <div class="row pt-2 m-1 mt-5" dir="rtl">
+        {% for department in departments %} 
+            <div class="col-6 col-md-3 col-lg-2 p-1">
+                <button class="btn btn-warning col-12" id="dep{{ department.id }}">{{ department.name }}</button>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row my-2 mx-1" dir="rtl">
+        <table class="table table-hover align-middle table-bordered">
+            <caption class="text-end">- اضغط على الايميل للنسخ</caption>
+            <thead>
+              <tr id="tableHeader">
+                <th scope="col" class="text-center">الاسم</th>
+                <th scope="col" class="text-center">الايميل</th>
+              </tr>
+            </thead>
+            <tbody class="">
+                {% for teacher in teachers %}
+                    <tr data-dep="dep{{ teacher.department.id }}">
+                        <td class="text-center">{{ teacher.name }}</td>
+                        <td class="text-center" data-type="email">{{ teacher.email }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>          
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'major/teachers_pageJS.js' %}"></script>
+{% endblock %}

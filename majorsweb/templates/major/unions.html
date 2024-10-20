@@ -1,0 +1,97 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    الاتحادات
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static 'major/logo/Logo.png' %}">
+{% endblock %}
+
+{# block for majors dorpdown #}
+{% block mmj %}
+    <div class="btn-group col-12 col-lg-auto mt-2 mt-lg-0">
+        <button class="btn btn-light dropdown-toggle text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            اختر التخصص
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" id="nav_dropdown">
+            {% for major in majors %}
+                <li><a class="dropdown-item text-end" href="{% url 'major_page' major.id %}">{{ major }}</a></li>
+                <li><hr class="dropdown-divider"></li>
+            {% endfor %}
+        </ul>
+      </div>
+{% endblock %}
+
+
+{% block body %}
+
+    {# block contain all unions cards #}
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 my-5" dir="rtl">
+        {% for team in teams %}
+            <div class="col">
+                <div class="card h-100">
+                    {# Button trigger modal #}
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#Modal{{ forloop.counter }}">
+                        <img src="{{ team.union_dark_logo.url }}" class="card-img-top" alt="{{ team.team }}" data-img-theme="dark">
+                        <img src="{{ team.union_light_logo.url }}" class="card-img-top" alt="{{ team.team }}" data-img-theme="light" hidden>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title align-middle">{{ team.long }}</h5>
+
+                        {# Modal #}
+                        <div class="modal fade" id="Modal{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <h1 class="modal-title fs-5" id="ModalLabel">{{ team.short }}</h1>
+                                    </div>
+                                    <div class="modal-body text-end">
+                                        <div class="container-fluid">
+                                            <div class="row" dir="rtl">
+                                                {{ team.description }}
+                                            </div>
+                                            <nav class="nav flex-column mt-3">
+                                                {% if team.face_link %}<a href="{{ team.face_link }}" class="btn btn-warning mb-2" target="_blank">Facebook Group</a>{% endif %}
+                                                {% if team.youtube_link %}<a href="{{ team.youtube_link }}" class="btn btn-warning mb-2" target="_blank">Youtube Channel</a>{% endif %}
+                                                {% if team.tele_link %}<a href="{{ team.tele_link }}" class="btn btn-warning mb-2" target="_blank">Telegram Channel</a>{% endif %}
+                                                {% if team.website_link %}<a href="{{ team.website_link }}" class="btn btn-warning mb-2" target="_blank">Website</a>{% endif %}
+                                                {% if team.insta_link %}<a href="{{ team.insta_link }}" class="btn btn-warning mb-2" target="_blank">Instagram</a>{% endif %}
+                                                {% if team.linkedin_link %}<a href="{{ team.linkedin_link }}" class="btn btn-warning mb-2" target="_blank">Linkedin</a>{% endif %}
+                                                {% if team.bot_link %}<a href="{{ team.bot_link }}" class="btn btn-warning mb-2" target="_blank">Bot</a>{% endif %}
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            changeLogo();
+        })
+
+        {# change logo of teams #}
+        function changeLogo() {
+            const darklogos = document.querySelectorAll("[data-img-theme='dark']");
+            const lightlogos = document.querySelectorAll("[data-img-theme='light']");
+
+            if(localStorage.getItem("theme") === "light"){
+                darklogos.forEach(logo => logo.hidden = true);
+                lightlogos.forEach(logo => logo.hidden = false);
+            } else {
+                darklogos.forEach(logo => logo.hidden = false);
+                lightlogos.forEach(logo => logo.hidden = true);
+            }
+        }
+    </script>
+{% endblock %}

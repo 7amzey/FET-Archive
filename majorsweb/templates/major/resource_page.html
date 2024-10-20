@@ -1,0 +1,202 @@
+{% extends "major/layout.html" %}
+{% load static %}
+
+{% block title %}
+    {{ subject.subject }}
+{% endblock %}
+
+{% block link %}
+    <link rel="icon" type="image/png" href="{% static 'major/logo/Logo.png' %}">
+{% endblock %}
+
+{% block body %}
+
+    {# Subject name as a header #}
+    <div class="my-5 text-center">
+        <h1 class="pt-5">{{ subject.subject }}</h1>
+    </div>
+
+
+    {# message if there's any problem with the links #}
+    {% if msg %}
+        <div class="alert alert-success" role="alert" dir="rtl">
+            <i class="bi bi-check-circle"></i>
+            تم الارسال بنجاح.
+        </div>
+    {% endif %}
+
+    
+    {# block header for the table , fav button and help button #}
+    <div class="row" dir='rtl'>
+        <h3 class="col-6 text-end" dir="rtl">مصادر للمادة :</h3>
+        <div class="col-6 text-start">
+            {# button to open help modal #}
+            <button class="btn btn-outline-secondary mx-1 mb-2" data-bs-toggle="modal" data-bs-target="#helpModal">
+                <i class="bi bi-question-circle"></i>
+            </button>
+            {# fav button that do addFav funtion when clicked (addFav function accept 3 parameters [subject name, subject link with respect to first major, subject id] ) #}
+            <button class="btn btn-outline-danger mx-1 mb-2" onclick='addFav("{{ subject.subject }}", "1/{{ subject.id }}", {{ subject.id }})' id="favBtn">
+                <i class="bi bi-heart"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" dir="rtl">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">هل تواجه مشكلة؟</h1>
+                    <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'help' mj.id subject.id %}" method="post" id="contact_form" onsubmit="submitSpinner()">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="emailField" class="form-label">البريد الالكتروني:</label>
+                            <input type="email" class="form-control" id="emailField" name="email" placeholder="email@example.com" required dir="ltr">
+                            
+                            <label for="sourceField" class="form-label mt-2">عنوان المصدر:</label>
+                            <input type="text" class="form-control" id="sourceField" placeholder="مثال: (سلايدات د.كامل, سنوات 2...)" name="source" required>
+
+                            <label for="subjectField" class="form-label mt-2">المادة:</label>
+                            <input type="text" class="form-control" id="subjectField" name="subjectName" value="{{ subject.subject }}" disabled>
+                        </div>
+                        <button type="submit" class="btn btn-warning">
+                            <span id="submit_state">إرسال</span>
+                            <span id="loading_state" hidden>تحميل...</span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="spinner" hidden></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# block for choose which data you need weather it is book or summaries or video etc.. #}
+    <div class="row border-top pt-2 m-1" dir="rtl">
+        <div class="col-6 col-md-3 col-lg-2 p-1">
+            <button class="btn btn-warning col-12" id="bookBtn">كتاب المادة</button>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 p-1">
+            <button class="btn btn-outline-warning col-12" id="summaryBtn">ملخصات للمادة</button>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 p-1">
+            <button class="btn btn-outline-warning col-12" id="examBtn">سنوات</button>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 p-1">
+            <button class="btn btn-outline-warning col-12" id="videoBtn">فيديوهات شرح</button>
+        </div>
+    </div>
+
+    {# table to show the data + class align-middle responsable to center the data vertically #}
+    <table class="table align-middle" dir="rtl">
+        <tbody>
+            {% for resource in resources %}
+                {% if resource.is_book is True %}
+                    <tr data-type="book">
+                        <td class="img-table text-center">
+                            {% if resource.team %}
+                                <img src="{{ resource.team.union_dark_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="dark">
+                                <img src="{{ resource.team.union_light_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="light" hidden>
+                            {% else %}
+                                <i class="bi bi-image"></i>
+                            {% endif %}
+                        </td>
+                        <td class="pe-3">
+                            {{ resource.source }}
+                        </td>
+                        <td class="text-center"><a href="{{ resource.link }}" target="_blank" class="btn btn-warning" tabindex="-1" role="button" aria-disabled="true">تحميل</a></td>
+                    </tr>
+                {% elif resource.is_exam is True %}
+                    <tr data-type="exam" hidden>
+                        <td class="img-table text-center">
+                            {% if resource.team %}
+                                <img src="{{ resource.team.union_dark_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="dark">
+                                <img src="{{ resource.team.union_light_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="light" hidden>
+                            {% else %}
+                                <i class="bi bi-image"></i>
+                            {% endif %}
+                        </td>
+                        <td class="pe-3">
+                            {{ resource.source }}
+                        </td>
+                        <td class="text-center"><a href="{{ resource.link }}" target="_blank" class="btn btn-warning" tabindex="-1" role="button" aria-disabled="true">تحميل</a></td>
+                    </tr>
+                {% else %}
+                    <tr data-type="summary" hidden>
+                        <td class="img-table text-center">
+                            {% if resource.team %}
+                                <img src="{{ resource.team.union_dark_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="dark">
+                                <img src="{{ resource.team.union_light_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="light" hidden>
+                            {% else %}
+                                <i class="bi bi-image"></i>
+                            {% endif %}
+                        </td>
+                        <td class="pe-3">
+                            {{ resource.source }}
+                        </td>
+                        <td class="text-center"><a href="{{ resource.link }}" target="_blank" class="btn btn-warning" tabindex="-1" role="button" aria-disabled="true">تحميل</a></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            {% for video in videos %}
+                <tr data-type="video" hidden>
+                    <td class="img-table text-center">
+                        {% if video.team %}
+                            <img src="{{ video.team.union_dark_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="dark">
+                            <img src="{{ video.team.union_light_logo.url }}" class="img-fluid img-table rounded-circle border border-1" data-img-theme="light" hidden>
+                        {% else %}
+                            <i class="bi bi-image"></i>
+                        {% endif %}
+                    </td>
+                    <td class="pe-3">
+                        {{ video.source }}                  
+                    </td>
+                    <td class="text-center">
+                        {% if video.link|length > 10 %}
+                            <a href="{{ video.link }}" target="_blank" class="btn btn-warning" tabindex="-1" role="button" aria-disabled="true">اضغط هنا</a>
+                        {% else %}
+                            {# Button trigger modal #}
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                اضغط هنا
+                            </button>
+
+                            {# Modal #}
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel" hidden>Modal title</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" dir="rtl">
+                                            كود التيمز : {{ video.link }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block script %}
+    <script>
+        let favs = JSON.parse(localStorage.getItem("subjects")) || {};
+        if({{ subject.id }} in favs){
+            let heart = document.getElementById(`favBtn`);
+            heart.setAttribute('class', 'btn btn-danger mx-1 mb-2');
+        }
+
+        let finished = JSON.parse(localStorage.getItem("finishedSubjects")) || {};
+        if({{ subject.id }} in finished){
+            let finishedBtn = document.getElementById("finishedBtn");
+            finishedBtn.setAttribute('class', 'btn btn-success mx-1 mb-2');
+        }
+    </script>
+    <script src="{% static 'major/resource_page.js' %}"></script>
+{% endblock %}

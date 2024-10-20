@@ -1,0 +1,84 @@
+html,body{
+  height: 100%;
+  font-family: "IBM Plex Sans Arabic", sans-serif!important;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* when hover over one of the semester divs the cursor turns into pointer */
+#sem1Label:hover, #sem2Label:hover, #sem3Label:hover, td[data-type="email"]{
+  cursor: pointer;
+}
+
+/* create border with 2px thick and can change when switching between themes */
+.custom-border{
+  border: 2px solid!important;
+}
+
+/* create custom bottom border for semester divs */
+.custom-border-bottom{
+  border-bottom: 2px solid;
+}
+
+/* change the background color of selected div in semesters divs */
+[data-active="true"]{
+  background-color: #FFC107;
+}
+
+/* change the color of the text to dark */
+[data-active="true"] span{
+  color: #212529;
+}
+
+.custom-hover:hover{
+  background-color: #FFCD39;
+  cursor: pointer;
+}
+
+.custom-hover:hover a{
+  color:#212529!important;
+}
+
+.custom-hover:hover div div a {
+  color:#212529!important;
+}
+
+.img-table{
+  width: 65px;
+}
+
+
+#plusIcon{
+  transition: transform 0.5s ease;
+}
+#plusIcon:hover{
+  transform: rotate(45deg);
+}
+
+.box {
+  transition: transform 0.5s ease;
+}
+.box:hover {
+  transform: scale(1.05); /* Scale the box to 105% of its original size */
+}
+
+
+/* width of scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* change color of scrollbar Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: #212529;
+  background: #FFCD39;
+}
+
+::selection {
+  color: #212529;
+  background: #FFCD39;
+}

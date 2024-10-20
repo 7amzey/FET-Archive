@@ -1,0 +1,1 @@
+web: gunicorn MajorsProject.wsgi --log-file - 
